@@ -1,108 +1,76 @@
 <!DOCTYPE html>
-
 <html lang="fr">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <meta charset="UTF-8">
+  <title>Iasnap — Messagerie chiffrée & IA</title>
+  <meta name="description" content="Iasnap — Messagerie chiffrée de bout en bout avec agents IA. Confidentialité, sécurité et communications privées en temps réel." />
+  <meta name="keywords" content="messagerie chiffrée, e2ee, IA, agent IA, communication sécurisée, confidentialité, WSS, WebSocket, libsodium, sécurité" />
 
-    <meta
-        name="viewport"
-        content="width=device-width,initial-scale=1"
-    >
+  <!-- Open Graph -->
+  <meta property="og:title" content="Iasnap — Messagerie chiffrée & IA" />
+  <meta property="og:description" content="Messagerie chiffrée de bout en bout avec intégration d'agents IA. Conçu pour la confidentialité et la simplicité." />
+  <meta property="og:type" content="website" />
 
-    <title>Messagerie IA sécurisée</title>
-
-    <link
-        rel="stylesheet"
-        href="/style.css"
-    >
-
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">Iasnap <small>🔐</small></h1>
+      <p class="tagline">Messagerie chiffrée de bout en bout • Agents IA • Privé par conception</p>
+    </div>
+  </header>
 
-    <main>
+  <main class="container main-grid">
+    <section class="card auth-card">
+      <h2>Connexion</h2>
 
-        <h1>🔐 Messagerie IA</h1>
+      <label for="identifiant">Identifiant</label>
+      <input id="identifiant" placeholder="votre-identifiant" value="humain" />
 
-        <p>
-            Communication chiffrée de bout en bout
-            entre utilisateurs et agents IA.
-        </p>
+      <label for="jeton">Jeton d'accès</label>
+      <input id="jeton" type="password" placeholder="Jeton d'accès secret" />
 
+      <div class="row">
+        <button id="connecter" class="btn primary">Se connecter</button>
+        <div id="statut" class="status">🔴 Déconnecté</div>
+      </div>
 
-        <section>
+      <p class="help">Conseil : générez un jeton côté serveur et conservez-le en sécurité. La clé privée du client est stockée localement.</p>
+    </section>
 
-            <h2>Connexion</h2>
+    <section class="card chat-card">
+      <h2>Conversation</h2>
 
-            <input
-                id="identifiant"
-                placeholder="Identifiant"
-                value="humain"
-            >
+      <label for="destinataire">Destinataire</label>
+      <select id="destinataire">
+        <option>Aucun agent connecté</option>
+      </select>
 
-            <input
-                id="jeton"
-                type="password"
-                placeholder="Jeton d'accès"
-            >
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="Votre message... (texte libre)"></textarea>
 
-            <button id="connecter">
-                Se connecter
-            </button>
+      <div class="row">
+        <button id="envoyer" class="btn accent">🔒 Envoyer</button>
+        <button id="clear" class="btn ghost">Effacer</button>
+      </div>
 
-            <div id="statut">
-                🔴 Déconnecté
-            </div>
+      <h3>Messages</h3>
+      <div id="messages" class="messages" aria-live="polite"></div>
+    </section>
+  </main>
 
-        </section>
+  <footer class="site-footer">
+    <div class="container">
+      <small>© Iasnap — Confidentialité • Sécurité • IA</small>
+    </div>
+  </footer>
 
-
-        <section>
-
-            <h2>Conversation</h2>
-
-            <select id="destinataire">
-                <option>
-                    Aucun agent connecté
-                </option>
-            </select>
-
-
-            <textarea
-                id="message"
-                placeholder="Votre message..."
-            ></textarea>
-
-
-            <button id="envoyer">
-                🔒 Envoyer
-            </button>
-
-        </section>
-
-
-        <section>
-
-            <h2>Messages</h2>
-
-            <div id="messages"></div>
-
-        </section>
-
-    </main>
-
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/libsodium-wrappers@0.7.15/dist/modules/libsodium-wrappers.js"
-    ></script>
-
-    <script
-        type="module"
-        src="/application.js"
-    ></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/libsodium-wrappers@0.7.15/dist/modules/libsodium-wrappers.js"></script>
+  <script type="module" src="/application.js"></script>
 </body>
-
 </html>
