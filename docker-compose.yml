@@ -1,18 +1,43 @@
-services:
+version: "3.8"
 
+services:
   messagerie:
     build: .
-
     restart: unless-stopped
-
-    ports:
-      - "3000:3000"
-
+    expose:
+      - "3000"
     env_file:
       - .env
-
     volumes:
-      - ./data:/app/data
+      - messagerie-data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "const http=require('http');http.get('http://127.0.0.1:3000/healthz',res=>process.exit(res.statusCode===200?0:1)).on('error',()=>process.exit(1));"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    networks:
+      - webnet
 
-    environment:
-      NODE_ENV: production
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - messagerie
+    networks:
+      - webnet
+
+volumes:
+  messagerie-data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  webnet:
+    driver: bridge

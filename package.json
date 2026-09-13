@@ -4,8 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node serveur.js",
-    "dev": "node --watch serveur.js"
+    "start": "node -r dotenv/config serveur.js",
+    "dev": "node -r dotenv/config --watch serveur.js",
+    "create-user": "node -r dotenv/config scripts/create_user.js"
   },
   "dependencies": {
     "better-sqlite3": "^11.8.1",
