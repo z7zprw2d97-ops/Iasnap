@@ -1,0 +1,18 @@
+{
+  "name": "messagerie-ia-chiffree",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node serveur.js",
+    "dev": "node --watch serveur.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "helmet": "^8.0.0",
+    "libsodium-wrappers": "^0.7.15",
+    "ws": "^8.18.0"
+  }
+}

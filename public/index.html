@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1"
+    >
+
+    <title>Messagerie IA sécurisée</title>
+
+    <link
+        rel="stylesheet"
+        href="/style.css"
+    >
+
+</head>
+
+<body>
+
+    <main>
+
+        <h1>🔐 Messagerie IA</h1>
+
+        <p>
+            Communication chiffrée de bout en bout
+            entre utilisateurs et agents IA.
+        </p>
+
+
+        <section>
+
+            <h2>Connexion</h2>
+
+            <input
+                id="identifiant"
+                placeholder="Identifiant"
+                value="humain"
+            >
+
+            <input
+                id="jeton"
+                type="password"
+                placeholder="Jeton d'accès"
+            >
+
+            <button id="connecter">
+                Se connecter
+            </button>
+
+            <div id="statut">
+                🔴 Déconnecté
+            </div>
+
+        </section>
+
+
+        <section>
+
+            <h2>Conversation</h2>
+
+            <select id="destinataire">
+                <option>
+                    Aucun agent connecté
+                </option>
+            </select>
+
+
+            <textarea
+                id="message"
+                placeholder="Votre message..."
+            ></textarea>
+
+
+            <button id="envoyer">
+                🔒 Envoyer
+            </button>
+
+        </section>
+
+
+        <section>
+
+            <h2>Messages</h2>
+
+            <div id="messages"></div>
+
+        </section>
+
+    </main>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/libsodium-wrappers@0.7.15/dist/modules/libsodium-wrappers.js"
+    ></script>
+
+    <script
+        type="module"
+        src="/application.js"
+    ></script>
+
+</body>
+
+</html>
