@@ -1,4 +1,4 @@
-example.com {
+iasnap.com {
     encode gzip
     reverse_proxy messagerie:3000 {
         header_up Host {host}
